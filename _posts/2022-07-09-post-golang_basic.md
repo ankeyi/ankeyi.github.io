@@ -73,4 +73,33 @@ filename := "httpd" + ".cfg"
 当我们把变量传递给函数处理时，Go语言会在函数中复制这些值，创建新的变量，保证原始值不会受到影响，如果使用指针，变量在函数中将不会复制值，而是将指针指向该变量
 
 ### 声明指针
-    var var_name * type
+```go  
+    // var声明变量，但把其类型设为指针，方法为类型前加 *运算符
+    // 这种方式声明变量初始值是 nil
+    var var_name * var_type
+
+    // 内建函数new()可以达到赋值效果，该函数用意在于为某种类型取得内存、填入该类型的零值，然后传回该内存的指针
+    var_name := new(var_type)
+    var var_name = new(var_type)
+
+    // 取得既有变量的指针，利用&运算符
+    var_name_1 := 6
+    var_name := &var_name_1
+
+    // 从指针取值
+    var_value := *var_name
+
+    // 函数指针
+    func max(varlue_1 *int, value_2 *int) (max int) {
+        ......
+        return max
+    }
+```
+## 声明常数
+声明常数方法和var一样，但不能使用短变量声明形式
+```go
+const <常数> <type> = <value1>
+const (
+   <常数> <type> = <value1>
+   <常数> <type> = <value2>
+)
